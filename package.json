@@ -1,0 +1,45 @@
+{
+  "name": "lotery-chain",
+  "version": "1.0.0",
+  "description": "Decentralized Lottery Blockchain with js-libp2p and Multi-Party RANDAO",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "lottery-chain": "dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "tsx src/cli/index.ts",
+    "test": "tsx test/simulation.test.ts",
+    "sim": "tsx test/simulation.test.ts"
+  },
+  "keywords": [
+    "blockchain",
+    "libp2p",
+    "randao",
+    "lottery",
+    "commit-reveal",
+    "consensus"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@chainsafe/libp2p-gossipsub": "^14.1.2",
+    "@chainsafe/libp2p-noise": "^17.0.0",
+    "@libp2p/identify": "^4.1.15",
+    "@libp2p/mdns": "^11.0.18",
+    "@libp2p/tcp": "^11.0.29",
+    "@libp2p/websockets": "^10.1.22",
+    "@libp2p/yamux": "^8.0.4",
+    "@noble/curves": "^2.4.0",
+    "@noble/ed25519": "^3.2.0",
+    "@noble/hashes": "^2.4.0",
+    "classic-level": "^3.0.0",
+    "libp2p": "^3.3.12"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
