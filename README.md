@@ -28,3 +28,7 @@ npm start keygen
 # Start a P2P node
 npm start node -- --port 9001
 ```
+
+## Documentation
+
+For a comprehensive architectural breakdown, mathematical analysis, and protocol specifications, see the [Deep Dive Technical Documentation](doc/README.md).
