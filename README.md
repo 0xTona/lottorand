@@ -3,6 +3,7 @@
 A decentralized application blockchain for provably fair lottery rounds using `js-libp2p` and a stake-backed multi-party commit-reveal (RANDAO) randomness engine.
 
 ## Features
+
 - **P2P Networking (`js-libp2p`)**: GossipSub v1.1 topics for `/lottery/tx/1.0.0`, `/lottery/entropy/1.0.0`, and `/lottery/blocks/1.0.0` with mDNS discovery, TCP/Yamux, and Noise security.
 - **Ethereum-Standard Cryptography**: `secp256k1` ECDSA signatures, `Keccak-256` hashing, and `0x...` EIP-55 checksum addresses.
 - **Stake-Backed RANDAO**: Two-phase multi-party commit-reveal protocol with XOR entropy aggregation ($R = \text{Keccak256}(s_1 \oplus \dots \oplus s_k)$).

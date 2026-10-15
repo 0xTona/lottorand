@@ -92,12 +92,12 @@ export class P2PNetworkNode extends EventEmitter {
 
   getMultiaddrs(): string[] {
     if (!this.node) return [];
-    return this.node.getMultiaddrs().map((m) => m.toString());
+    return this.node.getMultiaddrs().map((m: any) => m.toString());
   }
 
   getConnectedPeers(): string[] {
     if (!this.node) return [];
-    return this.node.getPeers().map((p) => p.toString());
+    return this.node.getPeers().map((p: any) => p.toString());
   }
 
   async dial(targetMultiaddr: string): Promise<void> {
