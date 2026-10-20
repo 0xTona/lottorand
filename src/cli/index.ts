@@ -43,6 +43,8 @@ async function main() {
       const p2pPort = Number(args.port) || 9001;
       const dbPath = (args.db as string) || `./data-node-${p2pPort}`;
       const privKey = (args.key as string) || '';
+      const bootstrapRaw = (args.bootstrap as string) || '';
+      const bootstrapAddrs = bootstrapRaw ? bootstrapRaw.split(',').map(s => s.trim()).filter(Boolean) : undefined;
 
       const keypair = privKey ? keypairFromPrivateHex(privKey) : generateKeypair();
 
@@ -53,6 +55,7 @@ async function main() {
         dbPath,
         enableP2P: true,
         p2pPort,
+        bootstrapAddrs,
         initialValidators: [{ address: keypair.address, publicKey: keypair.publicKey, stake: 500n * ONE_ETHER }],
         initialAccounts: { [keypair.address]: 10000n * ONE_ETHER }
       });
@@ -103,6 +106,7 @@ Commands:
     --port <number>          P2P port (default: 9001)
     --db <path>              Data directory for LevelDB
     --key <hex>              Private key for validator
+    --bootstrap <multiaddrs> Comma-separated bootstrap multiaddresses
   status                     Display chain and round status
     --db <path>              Data directory to query
 `);

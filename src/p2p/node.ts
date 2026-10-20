@@ -61,6 +61,20 @@ export class P2PNetworkNode extends EventEmitter {
       this.handleIncomingMessage(evt.detail.topic, evt.detail.data);
     });
 
+    // Auto-dial peers discovered via local discovery (e.g. mDNS)
+    this.node.addEventListener('peer:discovery', async (evt: any) => {
+      const peer = evt.detail;
+      this.emit('peer:discovery', peer);
+      if (peer.multiaddrs && peer.multiaddrs.length > 0) {
+        try {
+          await this.node?.dial(peer.multiaddrs);
+          this.emit('peer:connect', peer.id.toString());
+        } catch {
+          // Ignore connection errors during auto-discovery dial
+        }
+      }
+    });
+
     // Subscribe to chain topics
     await this.subscribe(TOPIC_TX);
     await this.subscribe(TOPIC_ENTROPY);

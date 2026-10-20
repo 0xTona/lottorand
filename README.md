@@ -26,9 +26,24 @@ npm test
 # Generate new secp256k1 keypair & Ethereum address
 npm start keygen
 
-# Start a P2P node
+# Start a primary P2P node (default port 9001)
 npm start node -- --port 9001
+
+# Start a second node on the same machine (auto-connects via mDNS)
+npm start node -- --port 9002
+
+# Or connect explicitly via bootstrap address
+npm start node -- --port 9002 --bootstrap "/ip4/127.0.0.1/tcp/9001/p2p/<PEER_ID>"
 ```
+
+### CLI Options for `node`
+
+- `--port <number>`: Port to listen for incoming P2P connections (default: `9001`).
+- `--db <path>`: Directory path for LevelDB storage (default: `./data-node-<port>`).
+- `--key <hex>`: Hex-encoded private key for the validator node.
+- `--bootstrap <multiaddrs>`: Comma-separated multiaddresses for bootstrap peers.
+
+Nodes running locally on the same network automatically discover and connect to each other using mDNS.
 
 ## Documentation
 
